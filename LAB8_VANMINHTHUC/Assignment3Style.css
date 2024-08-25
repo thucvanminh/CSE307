@@ -1,0 +1,43 @@
+p {
+    margin: 0;
+}
+
+.alert {
+    margin-top: 50px;
+    margin-left: 700px;
+    display: flex;
+    width: 40%;
+    position: relative;
+}
+
+.alert button {
+    border: none;
+    background-color: inherit;
+    color: white;
+    position: absolute;
+    right: 5%;
+}
+
+.alert.alert-danger {
+    background-color: red;
+    color: white;
+}
+
+.alert.alert-success {
+    background-color: rgb(22, 142, 22);
+    color: white;
+}
+
+.alert.alert-info {
+    background-color: rgb(8, 89, 139);
+    color: white;
+}
+
+.alert.alert-warning {
+    background-color: rgb(231, 196, 0);
+    color: white;
+}
+
+.alert {
+    transition: opacity 1s ease-in-out;
+}

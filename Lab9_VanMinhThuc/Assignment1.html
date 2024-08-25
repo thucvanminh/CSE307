@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="Assignment1Style.css" />
+
+
+    <title>Gallery</title>
+</head>
+
+<body>
+    <!-- <div class="general">
+        <div class="container">
+            <div class="row">
+                <div class="col-3 "><img src="./A1-images/Pic-1.jpg" class="img-thumbnail small-img"></div>
+                <div class="col-3 "><img src="./A1-images/Pic-2.jpg" class="img-thumbnail small-img"></div>
+                <div class="col-3 "><img src="./A1-images/Pic-3.jpg" class="img-thumbnail small-img"></div>
+                <div class="col-3 "><img src="./A1-images/Pic-4.jpg" class="img-thumbnail small-img"></div>
+            </div>
+            <div class="row display-img">
+
+                <div class="col-12">
+                    <img src="./A1-images/Pic-5.jpg" class="img-fluid img-thumbnail large-img" alt="...">
+                    <h2 class="img-">Text Overlay</h2>
+                    <div class="xButton">
+                        <button id="close-button" type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div> -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <img src="./A1-images/Pic-1.jpg" class="small-img" alt="">
+            </div>
+            <div class="col-3"><img src="./A1-images/Pic-2.jpg" class="small-img" alt=""></div>
+            <div class="col-3"><img src="./A1-images/Pic-3.jpg" class="small-img" alt=""></div>
+            <div class="col-3"><img src="./A1-images/Pic-4.jpg" class="small-img" alt=""></div>
+        </div>
+        <div class="row">
+            <div class="col-12 large-image-group">
+                <img src="./A1-images/Pic-5.jpg" class="large-img" alt="">
+                <button class="close-button"><i class="fa-solid fa-xmark"></i></button>
+                <div class="large-content">
+                    <p>Northen Lights</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <script>
+        $(".small-img").click(function () {
+            let imgSource = $(this).attr("src");
+            let tempSource = $(".large-img").attr("src");
+            $(".large-img").attr("src", imgSource);
+            $('.large-image-group').show();
+            $(this).attr("src",tempSource)
+        });
+
+
+        $('.close-button').click(function () {
+            $('.large-image-group').hide();
+        });
+
+
+    </script>
+</body>
+
+</html>

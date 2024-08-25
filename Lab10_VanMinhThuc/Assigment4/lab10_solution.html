@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <title>Student Management!</title>
+    <style type="text/css">
+        .col-left,
+        .col-right {
+            padding: 15px;
+            border: 1px solid #ccc;
+            height: 100%;
+            width: 100%;
+        }
+
+        .side-nav {
+            margin: 0;
+            padding: 0 0 0 15px;
+            list-style-type: none;
+        }
+
+        .side-nav li {
+            cursor: pointer;
+        }
+
+        .findStudent .col-2 {
+            display: flex;
+            align-items: end;
+        }
+
+        .body {
+            display: flex;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.3);
+            position: fixed;
+            z-index: 900;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .overlay .card-header {
+            text-align: center;
+            position: relative;
+        }
+        .closeOverlay{
+            height: max-content;
+            position: absolute;
+            top: -20px;
+            right: 1%;
+            font-size: 20px;
+            padding: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="closeOverlay">x</div>
+                    <h5>Edit Student</h5>
+                </div>
+                <div class="card-body">
+                    <div class="container fluid">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="editID">ID</label>
+                                <input type="text" class="form-control" id="editID">
+                            </div>
+                            <div class="col-6">
+                                <label for="editName">Name</label>
+                                <input type="text" class="form-control" id="editName">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="editEmail">Email</label>
+                                <input type="email" class="form-control" id="editEmail">
+                            </div>
+                            <div class="col-6">
+                                <label for="editClass">Class</label>
+                                <select name="" class="form-control" id="editClass"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-md-3">
+                <div class="col-left">
+                    <h3>Class List</h3>
+
+                    <ul class="side-nav">
+                        <!-- <li>Lop 1</li>
+                        <li></li> -->
+                    </ul>
+
+
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="col-right">
+                    <div class="card">
+                        <div class="card-header">
+                            Add a new student
+                        </div>
+                        <div class="card-body">
+                            <!--
+                                Dùng Form row có san ở component Form hoặc dùng chia cột
+                                roi chen cac field cung đuoc. PHAN NAY SINH VIEN NEN TỰ
+                                THỰC HÀNH.
+                                Vì phần này không được submit mà xử lý bằng
+                                JavaScript/jQuery nên có thể bỏ thẻ form (không khuyến
+                                thích), và nên dùng type = button (thay vì submit) cho
+                                button [cái này có dạy và làm trên lớp lý thuyết lẫn lab]-->
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="studentID">Student ID</label>
+                                        <input type="text" class="form-control" id="studentID">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="studentEmail">Student Email</label>
+                                        <input type="email" class="form-control" id="studentEmail">
+                                    </div>
+
+                                    <button type="button" id="addStudent" class="btn btn-outline-primary">Add</button>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="studentName">Student Name</label>
+                                        <input type="text" class="form-control" id="studentName">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="studentClass">Example select</label>
+
+                                        <select id="studentClass" class="form-control">
+                                            <!-- <option value="Lop 1">Lop 1</option>
+                                            <option value="Lop 2">Lop 2</option> -->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            Find Student
+                        </div>
+                        <div class="card-body">
+                            <div class="row findStudent">
+                                <div class="col-10">
+                                    <label for="findStudent">Student Name</label>
+                                    <input type="text" class="form-control" id="findStudent">
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" id="findButton" class="btn btn-outline-primary">Find</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            Student List
+                        </div>
+                        <div class="card-body">
+
+                            <table class="table table-borderless">
+
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Full Name</th>
+                                        <th scope="col">Student ID</th>
+                                        <th scope="col">Function</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <!-- <tr>
+                                        <td>1</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>
+                                            <button class="btn btn-outline-waring" type="button">Edit</button>
+
+                                            <button class="btn btn-outline-danger" type="button">Delete</button>
+
+                                        </td>
+                                    </tr> -->
+                                    <!-- Button trigger modal -->
+                                    <!-- <button type="button" class="btn btn-primary" data-target="#editStudent"
+                                        data-toggle="modal">
+                                        Launch static backdrop modal
+                                    </button> -->
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="editStudent" data-backdrop="static"
+                                        data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-xl modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <label for="editID">ID</label>
+                                                                <input type="text" class="form-control" id="editID">
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label for="editName">Name</label>
+                                                                <input type="text" class="form-control" id="editName">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <label for="editEmail">Email</label>
+                                                                <input type="email" class="form-control" id="editEmail">
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label for="editClass">Class</label>
+                                                                <select name="" class="form-control"
+                                                                    id="editClass"></select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tbody>
+
+
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            let studentList, classList;
+
+            $.get("http://139.180.213.49/getdata-student.php",
+                { "Type": "Student" },
+                function (randomdata) {
+
+                    console.log(randomdata);
+                    studentList = randomdata;
+
+
+                    PrintStudentList(studentList);
+                }, 'json');
+
+            $.get("http://139.180.213.49/getdata-student.php",
+                { "Type": "Class" },
+                function (data) {
+                    console.log(data);
+                    classList = data;
+
+                    let sideNavList = "", optionList = "";
+
+                    for (let each of classList) {
+                        sideNavList += `<li>${each}</li>`;
+                        optionList += `<option value="${each}">${each}</option>`;
+                    }
+
+                    $(".side-nav").append(sideNavList);
+                    $("#studentClass").append(optionList);
+                }, "json"
+            );
+
+            function sortByName(list_of_data) {
+                list_of_data.sort(function (a, b) {
+                    const aLastName = a.Name.split(' ')[a.Name.split(' ').length - 1];
+                    const bLastName = b.Name.split(' ')[b.Name.split(' ').length - 1];
+
+                    return aLastName.localeCompare(bLastName);
+                });
+            }
+
+            function PrintStudentList(list_student_to_print) {
+
+                sortByName(list_student_to_print);
+                let studentString = "";
+
+                let stt = 1;
+                for (let each of list_student_to_print) {
+                    studentString += ` <tr>
+                                        <td>${stt++}</td>
+                                        <td>${each.Name}</td>
+                                        <td>${each.ID}</td>
+                                        <td>
+                                            <button id="editButton" class="btn btn-outline-waring"  type="button" data-id="${each.ID}">Edit</button>
+
+                                            <button id="deleteButton" class="btn btn-outline-danger" type="button" data-id="${each.ID}">Delete</button>
+
+                                        </td>
+                                    </tr>`;
+                }
+
+                $("tbody").html(studentString);
+            }
+
+
+            // $(".side-nav").on("click", "li", function () {
+            //     let value = $(this).html();
+
+            //     let newStudentList = [];
+
+            //     for (let each of studentList) {
+            //         if (each.Class == value) {
+            //             newStudentList.push(each);
+            //         }
+            //     }
+
+            //     PrintStudentList(newStudentList);
+
+            // });
+
+
+
+
+
+            $(".side-nav").on("click", "li", function () {
+                let classValue = $(this).html();
+
+                let newStudentList = [];
+                for (let each of studentList) {
+                    if (each.Class == classValue) {
+                        newStudentList.push(each);
+                    }
+                }
+
+                PrintStudentList(newStudentList);
+            });
+
+            $("tbody").on("click", "#deleteButton", function () {
+                if (confirm("Are you sure ?")) {
+                    let itemID = $(this).attr("data-id");
+
+
+                    for (let index in studentList) {
+                        if (studentList[index].ID == itemID) {
+                            studentList.splice(index, 1);
+                        }
+                    }
+
+                    PrintStudentList(studentList);
+                }
+
+            });
+
+            $("#addStudent").click(function () {
+
+                let studentID = $("#studentID").val();
+                let studentName = $("#studentName").val();
+                let studentClass = $("studentClass").val();
+                let studentEmail = $("#studentEmail").val();
+
+                studentList.push({
+                    ID: studentID,
+                    Name: studentName,
+                    Email: studentEmail,
+                    Class: studentClass
+                });
+
+                PrintStudentList(studentList);
+            });
+
+            $("#findButton").click(function () {
+                let newStudentList = [];
+
+                let findName = $("#findStudent").val();
+                for (let each of studentList) {
+                    if (each.Name.toLowerCase().includes(findName.toLowerCase())) {
+                        newStudentList.push(each);
+                    }
+                }
+                if ($("#findStudent").val() == "") {
+                    PrintStudentList(studentList);
+                }
+                else {
+                    PrintStudentList(newStudentList);
+                }
+            });
+
+            // $("#editButton").click(function () {
+            //     console.log("cc");
+
+            //     let itemID = $(this).attr("data-id");
+            //     console.log(itemID);
+
+            // });
+        });
+    </script>
+</body>
+
+</html>

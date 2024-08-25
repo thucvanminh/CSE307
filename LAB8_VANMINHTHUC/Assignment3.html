@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Alert Messages</title>
+    <link rel="stylesheet" href="Assignment3Style.css">
+</head>
+
+<body>
+
+    <div class="alert alert-danger" role="alert">
+        <p> <b>Danger!</b> Indicates a dangerous or potentially negative action.
+            <span><button class="close-button"><i class="fa-solid fa-xmark"></i></button></span>
+        </p>
+    </div>
+    <div class="alert alert-success" role="alert">
+        <p><b>Success!</b> Indicates a successful or positive action.
+            <span><button class="close-button"><i class="fa-solid fa-xmark"></i></button></span>
+        </p>
+
+    </div>
+    <div class="alert alert-info" role="alert">
+        <p><b>Info!</b> Indicates a neutral informative change or action.
+            <span><button class="close-button"><i class="fa-solid fa-xmark"></i></button></span>
+        </p>
+
+    </div>
+    <div class="alert alert-warning" role="alert">
+        <p><b>Warning!</b> Indicates a warning that might need attention.
+            <span><button class="close-button"><i class="fa-solid fa-xmark"></i></button></span>
+        </p>
+
+    </div>
+
+
+
+    <script>
+        // setTimeout(function () {
+        //     let alertDiv = document.querySelectorAll(".alert");
+
+        //     for (let i = 0; i < alertDiv.length; i++) {
+        //         alertDiv[i].style.display = "none";
+        //     }
+        // }, 5000);
+
+
+
+        let closeButton = document.querySelectorAll("span");
+
+
+        for (let i = 0; i < closeButton.length; i++) {
+            closeButton[i].addEventListener("click", closeFuncion);
+        }
+
+        function closeFuncion(event){
+            event.target.parentNode.parentNode.parentNode.parentNode.style.display = "none";
+        }
+
+
+
+      
+
+    </script>
+
+
+
+</body>
+
+</html>

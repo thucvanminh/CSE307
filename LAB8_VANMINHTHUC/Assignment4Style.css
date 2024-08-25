@@ -1,0 +1,12 @@
+table {
+    width: fit-content;
+    border-collapse: collapse;
+  }
+  
+  td,
+  th {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #000000;
+  }
+  

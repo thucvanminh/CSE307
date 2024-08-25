@@ -1,0 +1,26 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.caution {
+    color: red;
+    display: none;
+}
+.input{
+    padding: 5px;
+}
+/* */
+.buttonSubmit{
+    padding: 10px 0px;
+    display: flex;
+    justify-content: center;
+}
+.buttonSubmit button{
+    padding: 10px ;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+.input :only-child{
+    width: 100%;
+}

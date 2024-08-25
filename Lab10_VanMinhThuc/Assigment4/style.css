@@ -1,0 +1,90 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.container-fluid {
+    margin-top: 20px;
+    height: 100vh;
+}
+
+.generalLeftColumn {
+    height: 80vh;
+    padding-right: 50px;
+}
+
+.left-div {
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+    padding-left: 15px;
+}
+
+.generalRightColumn {
+    height: 80vh;
+    border: 1px solid black;
+}
+
+.class-list li{
+    margin-left: 20px;
+}
+.class-list li button{
+    background-color: transparent;
+    border: none;
+}
+
+.edit-student-div {
+    border: 1px solid black;
+    margin-top: 10px;
+}
+
+.edit-header{
+    background-color: #F7F7F7;
+    border-bottom: 1px solid gray;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+.edit-header p{
+    margin: 0;
+}
+
+.edit-student-div{
+    margin-bottom: 30px;
+}
+
+.tableHeader{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    background-color: #F7F7F7;
+    border-bottom: 1px solid gray;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+}
+.tableHeader p{
+    margin: 0;
+}
+
+.mainTableContainer .table th{
+    border: none;
+}
+.mainTableContainer .table td{
+    border: none;
+}
+td button{
+    background-color: transparent;
+    border: none;
+    margin-right: 15px;
+}
+
+
+
+
+
+
+.updateButton{
+    height: 100%;
+    border: none;
+
+    width: 80%;
+}

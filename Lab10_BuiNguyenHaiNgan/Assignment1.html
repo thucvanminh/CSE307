@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+	crossorigin="anonymous"></script>
+	<title>Assignment 1 Lab 10</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body>button{
+			background-color: #007BFF;
+			border: none;
+			padding: 15px;
+			color: white;
+			border-radius: 5px;
+			font-size: 20px;
+		}
+
+		.overlay{
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.4);
+			position: absolute;
+			top: 0;
+			display: none;
+		}
+
+		.modaldialog{
+			height: 225px;
+			width: 500px;
+			background-color: white;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border-radius: 5px;
+			font-size: 20px;
+		}
+
+		.title{
+			font-size: 25px;
+			font-weight: bold;
+			padding: 20px 10px;
+			border-bottom: 1px solid lightgrey;
+		}
+
+		.title span{
+			margin-left: 320px;
+			font-weight: bold;
+			color: grey;
+		}
+
+		.title p{
+			margin-left: 10px;
+		}
+
+		.content{
+			padding: 20px 20px;
+			border-bottom: 1px solid lightgrey;
+		}
+
+		.footer{
+			width: 100%;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			padding-left: 280px;
+		}
+
+		.footer button{
+			background-color: #007BFF;
+			border: none;
+			padding: 15px;
+			color: white;
+			border-radius: 5px;
+			font-size: 15px;
+		}
+
+		.footer button:first-child{
+			background-color: grey;
+		}
+
+		.modaldialog{
+			border: 1px solid grey;
+		}
+	</style>
+</head>
+<body>
+	<h1>Vertically centered</h1>
+	<button id="btn1">Vertically centered modal</button>
+
+	<div class="overlay">
+		<div class="modaldialog">
+			<div class="title">
+				<p>Modal title<span class="close">&times;</span></p>
+			</div>
+			<div class="content">
+				<p>Placeholder text for this demonstration of a vertically centered modal dialog.</p>
+			</div>
+			<div class="footer">
+				<button class="close">Close</button>
+				<button class="save">Save changes</button>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#btn1").click(function(){
+				$(".overlay").show();
+				$(".modaldialog").hide();
+				$(".modaldialog").slideDown(300);
+			})
+
+			$(".close").click(function(){
+				$(".overlay").hide();
+			})
+
+			$(".save").click(function(){
+				$(".overlay").hide();
+			})
+		})
+
+
+	</script>
+</body>
+</html>

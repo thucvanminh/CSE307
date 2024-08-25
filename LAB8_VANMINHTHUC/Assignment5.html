@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Array of Objects</title>
+</head>
+
+<body>
+    <script>
+
+        class Product {
+            constructor(productName, prodcutImage, productPrice) {
+                this.productName = productName;
+                this.prodcutImage = prodcutImage;
+                this.productPrice = productPrice;
+            }
+
+            getDescription() {
+                return `Sản phẩm: ${this.name}, Giá: ${this.price}đ`;
+            }
+        }
+
+        let product1 = new Product('Watermelon', 'Green', 20000);
+        let product2 = new Product('Apple', 'Red', 10000);
+        let product3 = new Product('Banana', 'Yellow', 5000);
+
+        products = [product1, product2, product3]
+        products.sort((a, b) => {
+            return a.productPrice - b.productPrice;
+        });
+
+       
+
+
+
+
+    </script>
+</body>
+
+</html>

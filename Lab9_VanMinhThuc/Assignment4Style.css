@@ -1,0 +1,56 @@
+.container {
+    width: 400px;
+    height: 600px;
+    border: 1px solid grey;
+    padding-left: 10px;
+    margin: 10px;
+    position: relative;
+  }
+  
+  .container a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .openMenu {
+    font-size: 25px;
+  }
+  
+  .overlayNav {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* width: 100%;
+    height: 100vh; */
+    background-color: rgba(0, 0, 0, 0.95);
+  }
+  .openMenu span{
+    cursor: pointer;
+  }
+  .overlay-content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+  }
+  
+  .overlay-content a {
+    color: grey;
+    margin: 5px;
+    font-size: 30px;
+  }
+  
+  .xButton span {
+    color: grey;
+    display: flex;
+    font-size: 40px;
+  }
+  
+  .xButton {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    cursor: pointer;
+  }

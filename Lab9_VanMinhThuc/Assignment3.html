@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="styleSheet" href="Assignment3style.css" type="text/css" />
+</head>
+
+<body>
+    <main>
+        <title>Resgistration form</title>
+    </main>
+    <form action="">
+        <table border="1">
+            <tr>
+                <td><label for="fullnameTF"><b>Full Name *</b></label></td>
+                <td class="input"><input type="text" id="fullnameTF" placeholder="Enter your full name"
+                        class="TF required" size="70" required>
+                    <p class="caution">Your text field is empty</p>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="emailTF"><b>Email <sup>*</sup></b></label></td>
+                <td class="input"><input type="email" placeholder="Enter your email" id="emailTF" class="TF required"
+                        size="70" required>
+                    <p class="caution wrongFormEmail">Your Email is not correct (must contains "@")</p>
+                    <p class="caution">Your text field is empty</p>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="passwordTF"><b>Password <sup>*</sup></b></label></td>
+                <td class="input"><input type="password" id="passwordTF" class="TF required"
+                        placeholder="Enter your password" required size="70">
+                    <p class="caution">Your text field is empty</p>
+                    <p class="caution notLongPass">Password must have 6 charaters or more</p>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="confirmPasswordTF"><b>Confirm Password<sup>*</sup></b></label></td>
+                <td class="input"><input type="password" id="confirmPasswordTF" class="TF required" required
+                        placeholder="Enter your password again" size="70">
+                    <p class="caution">Your text field is empty</p>
+                    <p class="caution wrongPassWord">Your password is not correct</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td><label for="phoneTF"><b>Phone number <sup>*</sup></b></label></td>
+                <td class="input"><input type="tel" placeholder="Enter your phone number (only numbers)" id="phoneTF"
+                        class="TF required" size="70" required>
+                    <p class="caution">Your text field is empty</p>
+                    <p class="caution wrongFormNumber">Only allows numbers</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td><label for="addressTF"><b>Address</b></label></td>
+                <td class="input"><textarea name="address" id="addressTF" class="TF" rows="3" cols="60"></textarea></td>
+            </tr>
+            <tr>
+                <td><label for="cityTF"><b>City</b></label></td>
+                <td class="input"><input type="text" id="cityTF" class="TF" placeholder="Enter your city" size="38">
+                    <label for="stateTF"><b>State</b></label>
+                    <input type="text" id="stateTF" class="TF" placeholder="Enter your State">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="zipTF"><b>Zip/Postal Code</b></label></td>
+                <td class="input"><input type="text" placeholder="Enter your Zip/Postal Code" id="zipTF" class="TF"
+                        maxlength="10" minlength="3" size="70"></td>
+            </tr>
+            <tr>
+                <td><label for="contryselect"><b>Country</b></label></td>
+                <td class="input">
+                    <select id="contryselect">
+                        <option value="null">[Select your country]</option>
+                        <option value="Vietnam"> Viet Nam</option>
+                        <option value="USA">America</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="birthdayTF"><b>Birthday</b></label></td>
+                <td class="input"><input type="date" id="birthdayTF" class="TF" placeholder="mm/dd/yyyy"></td>
+            </tr>
+            <tr>
+                <td><label for="genderselect"><b>Gender</b></label></td>
+                <td class="input"><select id="genderselect">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td><b>Starting date</b></td>
+                <td class="input"><input type="radio" id="spring" value="Spring" name="startingRadio">
+                    <label for="spring">Spring</label>
+                    <input type="radio" id="summer" value="Summer" name="startingRadio">
+                    <label for="summer">Summer</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="commentTF"><b>Comments</b></label></td>
+                <td class="input"><textarea name="comments" id="commentTF" class="TF" rows="4" cols="50"
+                        placeholder="Please send us your information"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="buttonSubmit"> <button type="submit" id="buttonSubmit">Submit</button></div>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('#buttonSubmit').click(function (event) {
+                event.preventDefault();
+
+                $('.TF.required').each(function () {
+                    var $input = $(this);
+                    var $caution = $input.next('p.caution');
+
+                    if ($input.val().trim() === '') {
+                        $caution.show();
+                    } else {
+                        $caution.hide();
+                    }
+                });
+
+
+                if ($("#emailTF").val().indexOf('@') == -1) {
+                    $(".wrongFormEmail").css("display", "block");
+                } else {
+                    $(".wrongFormEmail").css("display", "none");
+                }
+
+
+
+                var phoneInput = $('#phoneTF');
+                var wrongFormNumber = phoneInput.next('p.wrongFormNumber');
+
+                if (!/^\d+$/.test(phoneInput.val())) {
+                    wrongFormNumber.show();
+                } else {
+                    wrongFormNumber.hide();
+                }
+
+                var passwordInput = $('#passwordTF');
+                var confirmPasswordInput = $('#confirmPasswordTF');
+                var wrongPassWord = confirmPasswordInput.next('p.wrongPassWord');
+
+                if (passwordInput.val().length() < 6) {
+                    $(".notLongPass").css("display","block");
+                }
+                else{
+                    $(".caution.notLongPass").css("display","none");
+                }
+
+                if (passwordInput.val() !== confirmPasswordInput.val()) {
+                    wrongPassWord.show();
+                } else {
+                    wrongPassWord.hide();
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
